@@ -70,10 +70,11 @@ Fully read each prompt (including the notes) before executing each step.
 For this demo you can
 
 1. Create an empty GitHub repo at [github.com](https://www.github.com/) called `netlify-react-test` - do not initialize a README for this step.
-2. Clone the new repo into your sandbox folder and `cd` into it.
-3. **Create a React app in the repo** running `npm create vite@latest .`
+2. Clone the new directory into your sandbox folder and `cd` into it.
+3. **Create a React app in the repo** running `npm create vite@latest .` 
    _Note the period at the end!!_
-4. Replace the App.jsx startercode with this basic React App starter code:
+4. Create a `.env` at the root of your current directory
+5. Replace the App.jsx startercode with this basic React App starter code:
 
 - Starter code
 
@@ -85,7 +86,7 @@ For this demo you can
   function App() {
     const [gifs, setGifs] = useState([]);
     function getGifData() {
-      const url = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_KEY}&q=minions&limit=10&rating=G&lang=en`;
+      const url = `https://api.giphy.com/v1/gifs/search?api_key=${import.meta.env.API_KEY}&q=minions&limit=10&rating=G&lang=en`;
       fetch(url)
         .then((res) => res.json())
         .then((res) => {
@@ -121,8 +122,8 @@ For this demo you can
 3. **Stage, commit, and push your code to GitHub.** Note: the \_redirects file does not have an extension. _This file prevents your routes from breaking on refreshes in deployment._
 4. **Create a `.env.local` file in the root of your repo** and paste your React GIPHY API key. You can use this one below if needed.
    `REACT_APP_GIPHY_KEY=NmYBMpJ204PfuilSDN94bzlmFrg439ae`
-5. Be sure the `.env.local` file is grayed out and not being read by Git.
-6. Test your code locally (`npm start` ) and verify it runs without issue.
+5. Be sure the `.env` file is grayed out and not being read by Git.
+6. Test your code locally (`npm run dev` ) and verify it runs without issue.
 7. Sign up for a free **Netlify** account by linking your Netlify account to Github.
 
 ### Part 3: Deploying with Netlify
